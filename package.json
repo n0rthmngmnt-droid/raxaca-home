@@ -1,0 +1,11 @@
+{
+  "name": "raxaca-home",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Raxaca Home \u2014 static ebook storefront with Stripe Checkout on Netlify.",
+  "type": "module",
+  "scripts": {
+    "preview": "npx serve public",
+    "dev": "npx netlify-cli dev"
+  }
+}
