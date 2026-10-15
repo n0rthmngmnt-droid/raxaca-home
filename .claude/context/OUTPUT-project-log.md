@@ -27,3 +27,4 @@ Deploy kullanıcı tarafından yapıldı. Canlı kontrol: sayfalar, `/ebooks/:sl
 - **Sorun:** `STRIPE_SECRET_KEY` olarak key'in ID'si (`mk_…`) girilmiş; Stripe 502 "looks like the ID of an API key". Kullanıcıya `sk_test_…` değerini girip yeniden deploy etmesi söylendi.
 - Domain raxaca.com kullanıcı tarafından bağlanıyor.
 - Netlify "Powered by Netlify" rozeti görünüyor — bizim koddan değil.
+- Key düzeltildi; `/api/checkout` artık Stripe Checkout URL'i döndürüyor (HTTP 200, hosted sayfa 200). **Ancak session `cs_live_` → Netlify'a LIVE key girilmiş.** Teslimat (PDF e-postası) olmadan canlı ödeme alınmamalı; kullanıcıya `sk_test_` ile değiştirmesi söylendi. Test sırasında 2 session oluşturuldu (ödeme yapılmadı; panelde "incomplete" görünür).
