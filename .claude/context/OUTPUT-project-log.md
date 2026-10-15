@@ -11,3 +11,10 @@ Statik ebook mağazası (mutfak & ev nişi). Orvenio Fitness (`~/Downloads/ebook
 **Tasarım kararı:** açık/krem zemin, serif başlık (Fraunces) + DM Sans, kil/adaçayı/krem kapaklar, pill butonlar, bol boşluk. Orvenio'dan ~%60 farklı layout: hero'da üç kapak, her rehber ana sayfada büyük "feature" satırı (kapak + içerik, sağ/sol dönüşümlü), dikey liste/raf yok.
 
 **Değişmeyen:** checkout fonksiyonu, ürün sayfası mantığı, legal/contact sayfa yapısı (metin Wyoming/US'e göre güncellenecek).
+
+## 2026-10-15 — Sıralı sipariş numarası / ödeme açıklaması
+
+Kullanıcı Stripe'ta ödemelerin "Marka Order #NNNNN" görünmesini istedi. Checkout Session'a `payment_intent_data[description] = "Raxaca Home Order #N"`, `client_reference_id = order-N`, `metadata[order_number]` eklendi; success URL'ine `&order=N` geçiyor ve success sayfası numarayı gösteriyor.
+- Sayaç: **Netlify Blobs** (`orders` store, `counter` anahtarı), 10001'den başlar. Tek npm bağımlılığı `@netlify/blobs` (sıfır-bağımlılık ilkesinden sapma, bilinçli). Netlify dışında (lokal Node testi) Blobs yoksa zaman tabanlı numaraya düşer.
+- Blobs'ta atomik artırma yok; aynı saniyede iki sipariş çok düşük olasılıkla aynı numarayı alabilir — kabul edildi.
+- Güvenlik: kullanıcı ikinci kez bir `sk_live_` key yapıştırdı; roll etmesi söylendi, kullanılmadı.

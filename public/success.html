@@ -47,10 +47,15 @@
   </main>
 
   <script type="module">
-    const sessionId = new URLSearchParams(window.location.search).get("session_id");
+    const query = new URLSearchParams(window.location.search);
+    const order = query.get("order");
+    const sessionId = query.get("session_id");
     const ref = document.getElementById("session-ref");
-    if (sessionId && ref) {
-      ref.textContent = "Reference: " + sessionId;
+    if (ref && (order || sessionId)) {
+      const parts = [];
+      if (order) parts.push("Order #" + order);
+      if (sessionId) parts.push("Reference: " + sessionId);
+      ref.textContent = parts.join(" · ");
       ref.hidden = false;
     }
   </script>
