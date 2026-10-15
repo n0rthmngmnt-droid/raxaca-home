@@ -18,3 +18,5 @@ Kullanıcı Stripe'ta ödemelerin "Marka Order #NNNNN" görünmesini istedi. Che
 - Sayaç: **Netlify Blobs** (`orders` store, `counter` anahtarı), 10001'den başlar. Tek npm bağımlılığı `@netlify/blobs` (sıfır-bağımlılık ilkesinden sapma, bilinçli). Netlify dışında (lokal Node testi) Blobs yoksa zaman tabanlı numaraya düşer.
 - Blobs'ta atomik artırma yok; aynı saniyede iki sipariş çok düşük olasılıkla aynı numarayı alabilir — kabul edildi.
 - Güvenlik: kullanıcı ikinci kez bir `sk_live_` key yapıştırdı; roll etmesi söylendi, kullanılmadı.
+
+- 2026-10-15: Domain **raxaca.com** (contact sayfasına + canonical/og:url eklendi). Repo: diğer hesapta, `boratsd` collaborator.
