@@ -20,3 +20,10 @@ Kullanıcı Stripe'ta ödemelerin "Marka Order #NNNNN" görünmesini istedi. Che
 - Güvenlik: kullanıcı ikinci kez bir `sk_live_` key yapıştırdı; roll etmesi söylendi, kullanılmadı.
 
 - 2026-10-15: Domain **raxaca.com** (contact sayfasına + canonical/og:url eklendi). Repo: diğer hesapta, `boratsd` collaborator.
+
+## 2026-10-15 — Canlı: https://raxaca.netlify.app
+
+Deploy kullanıcı tarafından yapıldı. Canlı kontrol: sayfalar, `/ebooks/:slug` rewrite, asset'ler, 404, HSTS, fonksiyon (GET→405, POST→Stripe'a ulaşıyor) OK; tarayıcıda fontlar/kapaklar doğru, konsol temiz.
+- **Sorun:** `STRIPE_SECRET_KEY` olarak key'in ID'si (`mk_…`) girilmiş; Stripe 502 "looks like the ID of an API key". Kullanıcıya `sk_test_…` değerini girip yeniden deploy etmesi söylendi.
+- Domain raxaca.com kullanıcı tarafından bağlanıyor.
+- Netlify "Powered by Netlify" rozeti görünüyor — bizim koddan değil.
